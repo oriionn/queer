@@ -1,12 +1,12 @@
-package colors
+package flags
 
 import "github.com/fatih/color"
 
-func Agender() []*color.Color {
-	firstColor := color.BgRGB(0, 0, 0)
-	secondColor := color.BgRGB(188, 196, 198)
+func Femboy() []*color.Color {
+	firstColor := color.BgRGB(213, 96, 169)
+	secondColor := color.BgRGB(229, 175, 206)
 	thirdColor := color.BgRGB(255, 255, 255)
-	fourthColor := color.BgRGB(182, 245, 131)
+	fourthColor := color.BgRGB(86, 207, 248)
 
 	return []*color.Color{firstColor, secondColor, thirdColor, fourthColor, thirdColor, secondColor, firstColor}
 }

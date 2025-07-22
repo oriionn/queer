@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -9,70 +10,52 @@ import (
 	"golang.org/x/term"
 )
 
-type Flag uint
+type Argument struct {
+	args        []string
+	value       colors.Color
+	description string
+}
 
-const (
-	LesbianFlag     Flag = 1 << iota // Done
-	GayFlag                          // Done
-	BisexualFlag                     // Done
-	TransgenderFlag                  // Done
-	PansexualFlag                    // Done
-	AsexualFlag                      // Done
-	NonBinaryFlag                    // Done
-	AromanticFlag                    // Done
-	PolysexualFlag                   // Done
-	DemiBoyFlag                      // Done
-	DemiGirlFlag                     // Done
-	AgenderFlag                      // Done
-	BigenderFlag                     // Done
-	GenderfluidFlag                  // Done
-	NeutroisFlag                     // Done
-	TrigenderFlag                    // Done
-	FemboyFlag                       // Done
-	MenLovingMenFlag
-)
+var args []Argument = []Argument{
+	{[]string{"agender", "ag"}, colors.Agender, "Print the agender flag"},
+	{[]string{"aromantic", "ar"}, colors.Aromantic, "Print the aromantic flag"},
+	{[]string{"asexual", "as"}, colors.Asexual, "Print the asexual flag"},
+	{[]string{"bigender", "big"}, colors.Bigender, "Print the bigender flag"},
+	{[]string{"bisexual", "bi", "b"}, colors.Bisexual, "Print the bisexual flag"},
+	{[]string{"demiboy", "db"}, colors.DemiBoy, "Print the demiboy flag"},
+	{[]string{"demigirl", "dg"}, colors.DemiGirl, "Print the demigirl flag"},
+	{[]string{"femboy", "f"}, colors.Femboy, "Print the femboy flag"},
+	{[]string{"gay", "g"}, colors.Gay, "Print the gay flag"},
+	{[]string{"genderfluid", "ge"}, colors.Genderfluid, "Print the genderfluid flag"},
+	{[]string{"lesbian", "l"}, colors.Lesbian, "Print the lesbian flag"},
+	{[]string{"menlovingmen", "mlm"}, colors.MenLovingMen, "Print the men loving men flag"},
+	{[]string{"neutrois", "ne"}, colors.Neutrois, "Print the neutrois flag"},
+	{[]string{"nonbinary", "nb"}, colors.NonBinary, "Print the non binary flag"},
+	{[]string{"pansexual", "pan", "pa"}, colors.Pansexual, "Print the pansexual flag"},
+	{[]string{"polysexual", "poly", "po"}, colors.Polysexual, "Print the polysexual flag"},
+	{[]string{"transgender", "trans", "t"}, colors.Transgender, "Print the transgender flag"},
+	{[]string{"trigender", "tr"}, colors.Trigender, "Print the trigender flag"},
+}
 
 func main() {
+	var color colors.Color
+
+	for _, arg := range args {
+		for _, name := range arg.args {
+			flag.BoolFunc(name, "", func(_ string) error {
+				color = arg.value
+				return nil
+			})
+		}
+	}
+
+	flag.Parse()
+
 	width, height, err := term.GetSize(int(os.Stdout.Fd()))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error getting terminal size: %v\n", err)
 		return
 	}
-	// fmt.Printf("Terminal size: %d columns x %d rows\n", width, height)
 
-	utils.PrintFlag(width, height, colors.Lesbian())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Gay())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Bisexual())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Transgender())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Pansexual())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Asexual())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.NonBinary())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Aromantic())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Polysexual())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Demiboy())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Demigirl())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Agender())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Bigender())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Genderfluid())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Neutrois())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Trigender())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.Femboy())
-	fmt.Println(" ")
-	utils.PrintFlag(width, height, colors.MenLovingMen())
+	utils.PrintFlag(width, height, colors.Get(color))
 }

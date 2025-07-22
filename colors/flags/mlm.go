@@ -1,4 +1,4 @@
-package colors
+package flags
 
 import "github.com/fatih/color"
 
