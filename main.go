@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oriionn/queer/flags"
+	"github.com/oriionn/queer/colors"
+	"github.com/oriionn/queer/utils"
 	"golang.org/x/term"
 )
 
@@ -39,39 +40,39 @@ func main() {
 	}
 	// fmt.Printf("Terminal size: %d columns x %d rows\n", width, height)
 
-	flags.Lesbian(width, height)
+	utils.PrintFlag(width, height, colors.Lesbian())
 	fmt.Println(" ")
-	flags.Gay(width, height)
+	utils.PrintFlag(width, height, colors.Gay())
 	fmt.Println(" ")
-	flags.Bisexual(width, height)
+	utils.PrintFlag(width, height, colors.Bisexual())
 	fmt.Println(" ")
-	flags.Transgender(width, height)
+	utils.PrintFlag(width, height, colors.Transgender())
 	fmt.Println(" ")
-	flags.Pansexual(width, height)
+	utils.PrintFlag(width, height, colors.Pansexual())
 	fmt.Println(" ")
-	flags.Asexual(width, height)
+	utils.PrintFlag(width, height, colors.Asexual())
 	fmt.Println(" ")
-	flags.NonBinary(width, height)
+	utils.PrintFlag(width, height, colors.NonBinary())
 	fmt.Println(" ")
-	flags.Aromantic(width, height)
+	utils.PrintFlag(width, height, colors.Aromantic())
 	fmt.Println(" ")
-	flags.Polysexual(width, height)
+	utils.PrintFlag(width, height, colors.Polysexual())
 	fmt.Println(" ")
-	flags.Demiboy(width, height)
+	utils.PrintFlag(width, height, colors.Demiboy())
 	fmt.Println(" ")
-	flags.Demigirl(width, height)
+	utils.PrintFlag(width, height, colors.Demigirl())
 	fmt.Println(" ")
-	flags.Agender(width, height)
+	utils.PrintFlag(width, height, colors.Agender())
 	fmt.Println(" ")
-	flags.Bigender(width, height)
+	utils.PrintFlag(width, height, colors.Bigender())
 	fmt.Println(" ")
-	flags.Genderfluid(width, height)
+	utils.PrintFlag(width, height, colors.Genderfluid())
 	fmt.Println(" ")
-	flags.Neutrois(width, height)
+	utils.PrintFlag(width, height, colors.Neutrois())
 	fmt.Println(" ")
-	flags.Trigender(width, height)
+	utils.PrintFlag(width, height, colors.Trigender())
 	fmt.Println(" ")
-	flags.Femboy(width, height)
+	utils.PrintFlag(width, height, colors.Femboy())
 	fmt.Println(" ")
-	flags.MenLovingMen(width, height)
+	utils.PrintFlag(width, height, colors.MenLovingMen())
 }

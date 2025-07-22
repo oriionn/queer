@@ -1,11 +1,8 @@
-package flags
+package colors
 
-import (
-	"github.com/fatih/color"
-	"github.com/oriionn/queer/flags/models"
-)
+import "github.com/fatih/color"
 
-func MenLovingMen(width int, height int) {
+func MenLovingMen() []*color.Color {
 	topColor := color.BgRGB(0, 139, 109)
 	middleTopColor := color.BgRGB(27, 203, 165)
 	middleMiddleTopColor := color.BgRGB(153, 240, 197)
@@ -14,5 +11,5 @@ func MenLovingMen(width int, height int) {
 	middleBottomColor := color.BgRGB(75, 67, 212)
 	bottomColor := color.BgRGB(55, 15, 122)
 
-	models.Heptaflag(height, width, topColor, middleTopColor, middleMiddleTopColor, middleColor, middleMiddleBottomColor, middleBottomColor, bottomColor)
+	return []*color.Color{topColor, middleTopColor, middleMiddleTopColor, middleColor, middleMiddleBottomColor, middleBottomColor, bottomColor}
 }
