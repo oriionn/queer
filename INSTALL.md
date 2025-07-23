@@ -5,5 +5,5 @@
 ## Installation
 To install the CLI tool, you have just to execute this command:
 ```sh
-go install github.com/oriionn/queer
+go install github.com/oriionn/queer@latest
 ```
