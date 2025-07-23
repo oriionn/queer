@@ -11,6 +11,26 @@ To install the CLI tool, you have just to execute this command:
 go install github.com/oriionn/queer
 ```
 
+## Available flags
+- Lesbian
+- Gay
+- Bisexual
+- Transgender
+- Pansexual
+- Asexual
+- NonBinary
+- Aromantic
+- Polysexual
+- Demiboy
+- Demigirl
+- Agender
+- Bigender
+- Genderfluid
+- Neutrois
+- Trigender
+- Femboy
+- Men loving Men
+
 ## Benchmark
 Here is a little benchmark made with [Hyperfine](https://github.com/sharkdp/hyperfine)
 ```
@@ -23,3 +43,6 @@ Benchmark 1: queer -b
     <summary>Screenshot as a proof</summary>
     <img src="./assets/benchmark.png" alt="Time : 1.3 ms ±   0.5 ms" />
 </details>
+
+## License
+This project is under the [MIT License](LICENSE). More info on [Choose a license](https://choosealicense.com/licenses/mit/).
